@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 import Box from 'ui/atoms/Box';
 import { Typography } from 'ui/atoms/Typography';
-import { Modal } from 'ui/components/Modal';
 
-export const SearchLoaderModalWrapper = styled(Modal)`
-  #modal-inner {
-    border-radius: 5.96364px;
-  }
-`;
+
+
 
 export const LoaderInner = styled.div`
   display: flex;

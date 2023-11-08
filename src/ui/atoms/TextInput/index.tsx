@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
-
+import React from 'react';
 import { InnerWrapper, Input, InputErrorMessage, InputWrapper, Label } from './index.styled';
 import { InputProps } from './interface';
-import { usePasswordEye } from './usePasswordEye';
+
 
 export const TextInput = React.forwardRef((props: InputProps, ref) => {
   const {
@@ -33,17 +31,10 @@ export const TextInput = React.forwardRef((props: InputProps, ref) => {
     labelClass
   } = props;
 
-  const theme = useContext(ThemeContext);
+ 
 
-  const { PasswordEye, isPasswordEyeOpen } = usePasswordEye();
 
-  // const inputRef = useRef<HTMLInputElement>(null);
-
-  // useImperativeHandle(ref, () => ({
-  //   focus: () => {
-  //     inputRef.current?.focus();
-  //   }
-  // }));
+  
 
   const hasError = isValid === false;
 
@@ -86,9 +77,7 @@ export const TextInput = React.forwardRef((props: InputProps, ref) => {
             onKeyUp={onKeyUp}
             ref={ref as any}
             {...props}
-            {...(type === 'password' ? { type: isPasswordEyeOpen ? 'text' : 'password' } : {})}
           />
-          {type === 'password' && <PasswordEye />}
         </InnerWrapper>
       </div>
       {hasError && <InputErrorMessage className="error_text">{errorText}</InputErrorMessage>}

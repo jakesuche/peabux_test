@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@types/styled-system": "^5.1.22",
     "axios": "^1.6.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
@@ -24,8 +25,10 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "eslint": "^8.53.0",
     "eslint-config-next": "14.0.1",
+    "eslint-plugin-prettier": "^5.0.1",
     "typescript": "^5"
   }
 }
