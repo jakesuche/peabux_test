@@ -24,7 +24,7 @@ export function useApiQuery<T>(
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<AxiosError | null>(null);
 
-  const fetchData = async <TP>(data:TP) => {
+  const fetchData = async <TP>(data: TP) => {
     if (!enabled) {
       return;
     }

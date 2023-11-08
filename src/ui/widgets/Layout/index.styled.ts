@@ -5,5 +5,5 @@ export const LayoutWrapper = styled.div`
 `;
 
 export const MainBody = styled.main`
-  min-height: calc(100vh - 40rem);
+  min-height: 100vh;
 `;

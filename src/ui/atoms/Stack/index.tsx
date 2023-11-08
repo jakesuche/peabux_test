@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { StackContainer, StackProps } from './index.style';
+import { StackContainer, StackProps } from "./index.style";
 
 const Stack: React.FC<StackProps> = ({
   spacing = 8,
-  direction = 'column',
-  alignItems = 'flex-start',
-  justifyContent = 'flex-start',
+  direction = "column",
+  alignItems = "flex-start",
+  justifycontent = "flex-start",
   sm,
   md,
   lg,
@@ -20,11 +20,12 @@ const Stack: React.FC<StackProps> = ({
       spacing={spacing}
       direction={direction}
       alignItems={alignItems}
-      justifyContent={justifyContent}
+      justifycontent={justifycontent}
       sm={sm}
       md={md}
       lg={lg}
-      xl={xl}>
+      xl={xl}
+    >
       {children}
     </StackContainer>
   );
