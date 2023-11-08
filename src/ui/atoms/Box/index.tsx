@@ -16,7 +16,7 @@ export interface BoxProps {
   border?: CSSProperties["border"];
   borderRadius?: CSSProperties["borderRadius"];
   boxShadow?: CSSProperties["boxShadow"];
-  alignItems?: CSSProperties["alignItems"];
+  alignitems?: CSSProperties["alignItems"];
   justifycontent?: CSSProperties["justifyContent"];
   css?: string;
   zIndex?: CSSProperties["zIndex"];
@@ -35,7 +35,7 @@ export interface BoxProps {
 const Box = styled.div<BoxProps>`
   display: ${(props) => props.display || "block"};
   margin: ${(props) => props.margin || "0"};
-  align-items: ${(props) => props.alignItems};
+  align-items: ${(props) => props.alignitems};
   justify-content: ${(props) => props.justifycontent};
   margin-top: ${(props) =>
     typeof props.mt === "number" ? `${props.mt}px` : props.mt};

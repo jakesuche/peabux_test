@@ -1,22 +1,22 @@
-import styled, { css, DefaultTheme } from 'styled-components';
-import { color, layout, space, typography, variant } from 'styled-system';
+import styled, { css, DefaultTheme } from "styled-components";
+import { color, layout, space, typography, variant } from "styled-system";
 
 export interface ButtonProps {
   variant?:
-    | 'solid'
-    | 'outline'
-    | 'link'
-    | 'secondary'
-    | 'interactiveSolid'
-    | 'interactiveOutlined'
-    | 'unstyled';
+    | "solid"
+    | "outline"
+    | "link"
+    | "secondary"
+    | "interactiveSolid"
+    | "interactiveOutlined"
+    | "unstyled";
   fullWidth?: boolean;
   large?: boolean;
   rounded?: boolean;
   height?: string;
   disabled?: boolean;
-  bgColor?: keyof DefaultTheme['colors'];
-  fontSize?: keyof DefaultTheme['fontSizes'];
+  bgcolor?: keyof DefaultTheme["colors"];
+  fontSize?: keyof DefaultTheme["fontSizes"];
   borderRadius?: string;
 }
 export const Button = styled.button<ButtonProps>`
@@ -33,9 +33,10 @@ export const Button = styled.button<ButtonProps>`
     borderRadius ? borderRadius : theme?.borderRadius?.sm};
   font-size: ${({ theme, fontSize }) =>
     fontSize ? theme?.fontSizes[fontSize] : theme?.fontSizes?.md};
-  padding: ${({ theme }) => `${theme?.space?.['2']} ${theme?.space?.['3']}`};
+  padding: ${({ theme }) => `${theme?.space?.["2"]} ${theme?.space?.["3"]}`};
   height: ${({ height }) => height};
-  background-color: ${({ bgColor, theme }) => (bgColor ? theme.colors[bgColor] : null)}!important;
+  background-color: ${({ bgcolor, theme }) =>
+    bgcolor ? theme.colors[bgcolor] : null}!important;
   transition: transform 0.4s;
   &:hover {
     transform: scale(1.02);
@@ -54,9 +55,9 @@ export const Button = styled.button<ButtonProps>`
           backgroundColor: theme?.colors?.lightBlue,
           color: theme?.colors?.white,
 
-          '&:disabled': {
-            backgroundColor: theme?.colors?.cottenSeed
-          }
+          "&:disabled": {
+            backgroundColor: theme?.colors?.cottenSeed,
+          },
         },
         outline: {
           fontFamily: theme?.fonts?.primary,
@@ -64,48 +65,48 @@ export const Button = styled.button<ButtonProps>`
           border: `1px solid ${theme?.colors?.lightBlue}`,
           backgroundColor: theme?.colors?.white,
           borderRadius: theme?.borderRadius?.base,
-          lineHeight: 'shorter',
+          lineHeight: "shorter",
 
-          '&:disabled': {
+          "&:disabled": {
             color: theme?.colors?.gray,
-            borderColor: theme?.colors?.gray
-          }
+            borderColor: theme?.colors?.gray,
+          },
         },
         link: {
-          appearance: 'none',
-          background: 'transparent',
+          appearance: "none",
+          background: "transparent",
           fontFamily: theme?.fonts?.primary,
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignitems: "center",
           color: theme?.colors?.blue,
           padding: 0,
-          textTransform: 'uppercase'
+          textTransform: "uppercase",
         },
         secondary: {
           fontFamily: theme?.fonts?.primary,
           backgroundColor: theme?.colors?.orange,
-          color: theme?.colors?.black
+          color: theme?.colors?.black,
         },
         interactiveSolid: {
-          background: 'transparent',
+          background: "transparent",
           color: theme?.colors?.white,
-          border: '2px solid',
+          border: "2px solid",
           borderColor: theme?.colors?.lightBlue,
-          padding: `${theme?.space?.['2.5']} ${theme?.space?.['5']}`,
-          transition: `border 0.125s ease, background 0.125s ease`
+          padding: `${theme?.space?.["2.5"]} ${theme?.space?.["5"]}`,
+          transition: `border 0.125s ease, background 0.125s ease`,
         },
         interactiveOutlined: {
-          background: 'transparent',
+          background: "transparent",
           color: theme?.colors?.white,
-          border: '2px solid',
+          border: "2px solid",
           borderColor: theme?.colors?.whitish,
-          padding: `${theme.space?.['2.5']} ${theme?.space?.['5']}`,
-          transition: `border 0.125s ease, background 0.125s ease`
+          padding: `${theme.space?.["2.5"]} ${theme?.space?.["5"]}`,
+          transition: `border 0.125s ease, background 0.125s ease`,
         },
         unstyled: {
-          background: 'transparent'
-        }
-      }
+          background: "transparent",
+        },
+      },
     })}
 
     &:hover {
@@ -113,13 +114,14 @@ export const Button = styled.button<ButtonProps>`
         variants: {
           outline: {},
           interactiveSolid: { backgroundColor: theme?.colors?.lightBlue },
-          interactiveOutlined: { borderColor: theme?.colors?.white }
-        }
+          interactiveOutlined: { borderColor: theme?.colors?.white },
+        },
       })}
     }
   `};
 
   ${({ fullWidth }) => fullWidth && `width: 100%`};
   ${({ large }) => large && `min-height: 40px`};
-  ${({ rounded, theme }) => rounded && `border-radius: ${theme?.borderRadius?.full}`};
+  ${({ rounded, theme }) =>
+    rounded && `border-radius: ${theme?.borderRadius?.full}`};
 `;

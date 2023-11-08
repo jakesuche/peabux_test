@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 
-export const InputsGroup = styled.form<{ isError?: boolean }>`
+export const Form = styled.form<{ isError?: boolean }>`
   label {
     font-size: 10px;
     color: ${({ theme }) => theme.colors.lightGeyser};

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 export interface StackProps {
   spacing?: number;
   direction?: "row" | "column";
-  alignItems?: CSSProperties["alignItems"];
+  alignitems?: CSSProperties["alignItems"];
   justifycontent?: CSSProperties["justifyContent"];
   padding?: string;
   width?: string;

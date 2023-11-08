@@ -5,7 +5,7 @@ import { StackContainer, StackProps } from "./index.style";
 const Stack: React.FC<StackProps> = ({
   spacing = 8,
   direction = "column",
-  alignItems = "flex-start",
+  alignitems = "flex-start",
   justifycontent = "flex-start",
   sm,
   md,
@@ -19,7 +19,7 @@ const Stack: React.FC<StackProps> = ({
       {...res}
       spacing={spacing}
       direction={direction}
-      alignItems={alignItems}
+      alignitems={alignitems}
       justifycontent={justifycontent}
       sm={sm}
       md={md}

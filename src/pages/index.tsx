@@ -1,34 +1,31 @@
+import { useState } from "react";
+import { Button } from "ui/atoms/Button";
+import { Container } from "ui/atoms/Container";
+import { GridContainer, GridItem } from "ui/atoms/Grid";
+import Stack from "ui/atoms/Stack";
+import { Typography } from "ui/atoms/Typography";
+import SimpleModal from "ui/components/Modal";
+import TabController, { TabsBody } from "ui/components/TabController";
+import CreationForm from "ui/widgets/CreationForm";
+import Layout from "ui/widgets/Layout";
+import { StudentTable, TeachersTable } from "ui/widgets/UserTables";
 
-import { useState } from 'react'
-import { Button } from 'ui/atoms/Button'
-import { Container } from 'ui/atoms/Container'
-import { GridContainer, GridItem } from 'ui/atoms/Grid'
-import Stack from 'ui/atoms/Stack'
-import { Typography } from 'ui/atoms/Typography'
-import SimpleModal from 'ui/components/Modal'
-import TabController,{TabsBody} from 'ui/components/TabController'
-import CreationForm from 'ui/widgets/CreationForm'
-import Layout from 'ui/widgets/Layout'
-import { StudentTable, TeachersTable } from 'ui/widgets/UserTables'
-
-
-
-const tabs = [{
-  key:'Teachers'
-},
-{
-  key:'Students'
-}]
-
+export const tabs = [
+  {
+    key: "Teachers",
+  },
+  {
+    key: "Students",
+  },
+];
 
 export default function Home() {
-
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const [show,setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   const handleModal = () => {
-    setShow(!show)
-  } 
+    setShow(!show);
+  };
 
   return (
     <Layout>
@@ -44,7 +41,7 @@ export default function Home() {
             />
           </GridItem>
           <GridItem xs={12} md={12}>
-            <Button onClick={handleModal} bgColor="black" variant="solid">
+            <Button onClick={handleModal} bgcolor="black" variant="solid">
               Create User
             </Button>
           </GridItem>

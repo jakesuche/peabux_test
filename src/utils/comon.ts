@@ -1,4 +1,4 @@
-const calculateAge = (dateOfBirth) => {
+const calculateAge = (dateOfBirth: string) => {
   const today = new Date();
   const birthDate = new Date(dateOfBirth);
   const age = today.getFullYear() - birthDate.getFullYear();
@@ -6,15 +6,20 @@ const calculateAge = (dateOfBirth) => {
   return age;
 };
 
-export const validateDateOfBirth = (data) => {
-  const age = calculateAge(data.dob);
+export const validateDateOfBirth = (dob: string, type: string) => {
+  const age = calculateAge(dob);
 
-  if (data.studentNumber && age > 22) {
-    return "Students' age must not be more than 22!";
-  } else if (data.teacherNumber && age < 21) {
-    return "Teachers' age must not be less than 21!";
+  if (type === "Teachers") {
+    if (age < 21) {
+      return "Teachers' age must not be less than 21!";
+    } else {
+      return true;
+    }
   } else {
-   
-    console.log(data);
+    if (age > 22) {
+      return "Students' age must not be more than 22!";
+    } else {
+      return true;
+    }
   }
 };

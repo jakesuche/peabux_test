@@ -1,4 +1,5 @@
-export const defaultValues = {
+
+export const defaultValues: FormDataProps = {
   title: "",
   name: "",
   surname: "",
@@ -8,3 +9,16 @@ export const defaultValues = {
   salary: "",
   studentNumber: "",
 };
+
+
+export type FormDataProps = {
+  title: string;
+  name: string;
+  surname: string;
+  dob: string;
+  nationalId: string;
+  teacherNumber: string;
+  salary: string;
+  studentNumber: string;
+};
+
