@@ -26,13 +26,12 @@ export default withSessionRoute(async function handler(
         );
 
         if (isUnique) {
-          // Push the new record to the array
+    
           users.push(req.body);
           req.session.users = users;
           await req.session.save();
-          console.log(users);
         } else {
-          // Handle the case where teacherNumber is not unique (e.g., return an error)
+
           res.status(400).json({ error: "Teacher number is not unique" });
         }
       } else if (type === "student") {
@@ -43,11 +42,9 @@ export default withSessionRoute(async function handler(
         );
 
         if (isUnique) {
-          // Push the new record to the array
           users.push(req.body);
           req.session.users = users;
           await req.session.save();
-          console.log(users);
         } else {
           // Handle the case where studentNumber is not unique (e.g., return an error)
           res.status(400).json({ error: "Student number is not unique" });
@@ -64,7 +61,6 @@ export default withSessionRoute(async function handler(
         users.push(req.body);
         req.session.users = users;
         await req.session.save();
-        console.log(users);
       } else {
         // Handle the case where nationalId is not unique (e.g., return an error)
         res.status(400).json({ error: "National ID is not unique" });
@@ -78,7 +74,6 @@ export default withSessionRoute(async function handler(
 
     res.status(200).json({ name: "John Doe", data: req.session.users });
   } catch (error) {
-    console.error("Error handling request:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });

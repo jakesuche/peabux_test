@@ -23,3 +23,12 @@ export const validateDateOfBirth = (dob: string, type: string) => {
     }
   }
 };
+
+
+export const allowOnlyNumber = (value: string, maxLength?: number) => {
+  if (maxLength) {
+    return value?.slice(0, maxLength);
+  } else {
+    return value?.replace(/[^0-9]/g, "");
+  }
+};
