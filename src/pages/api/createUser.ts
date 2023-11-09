@@ -71,7 +71,7 @@ export default withSessionRoute(async function handler(
       console.log(req.session.users);
     }
 
-    res.status(200).json({ error: "User saved successfull", data: req.session.users });
+    res.status(200).json({ message: "User saved successfull", data: req.session.users });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
