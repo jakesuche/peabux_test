@@ -65,5 +65,4 @@ The theme is based on mobile first and defined in src/styles/theme.ts file. Open
 - theme.media.down
 - theme.media.between
 
-Usage example:
 
