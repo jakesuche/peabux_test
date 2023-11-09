@@ -26,6 +26,7 @@ export default function Home() {
 
   const {data,isLoading} = useGetUsers()
  const users = data?.data;
+ console.log(users)
 
 
   const handleModal = () => {
@@ -68,7 +69,7 @@ export default function Home() {
         </GridContainer>
 
         <SimpleModal onClose={handleModal} isOpen={show}>
-          <CreationForm />
+          <CreationForm onClose={handleModal} />
         </SimpleModal>
       </Container>
     </Layout>

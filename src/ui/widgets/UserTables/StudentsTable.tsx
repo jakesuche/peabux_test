@@ -1,5 +1,5 @@
 import React from "react";
-import Stack from "ui/atoms/Stack";
+
 import { Typography } from "ui/atoms/Typography";
 
 import { BookingsTableContainer, BookingsTableWrapper } from "./index.styled";
@@ -21,7 +21,7 @@ export const StudentTable = ({users}:{users:FormDataProps[]}): JSX.Element => {
             </tr>
           </thead>
           <tbody>
-            {filterUsers(users, "teacher")?.map((e, i) => (
+            {filterUsers(users, "student")?.map((e, i) => (
               <tr key={e.studentNumber}>
                 <td>{e.nationalId}</td>
                 <td>{e.name}</td>

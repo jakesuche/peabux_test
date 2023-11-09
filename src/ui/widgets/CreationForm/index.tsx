@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
 import { GridContainer, GridItem } from 'ui/atoms/Grid';
 import { TextInput } from 'ui/atoms/TextInput';
 import TabController from 'ui/components/TabController';
 import { Form } from './index.styled';
 import { Button } from 'ui/atoms/Button';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { FormDataProps, defaultValues } from 'utils/schema';
 import { allowOnlyNumber, validateDateOfBirth } from 'utils/comon';
 import { tabs } from 'pages';
 import { Typography } from 'ui/atoms/Typography';
 import useCreateUser from 'lib/useCreateUser';
+import Box from 'ui/atoms/Box';
 
 
 type Iprops = keyof typeof defaultValues;
@@ -19,14 +20,16 @@ type Iprops = keyof typeof defaultValues;
  const titles = ["Mr", "Mrs", "Miss", "Dr", "Prof"]; 
 
 
-function CreationForm() {
+function CreationForm({onClose}:{onClose: () => void}) {
 const [activeTab, setActiveTab] = useState(tabs[0]);
-const {mutate:createUser} = useCreateUser()
+const {mutate:createUser, isError,error,isSuccess} = useCreateUser()
+const errorMessage = error?.response.data.error;
 
 const {register, handleSubmit,control, formState:{errors} } = useForm({
   defaultValues,
   mode:'all'
 });
+
 
 
 const handleError = (value: Iprops) => {
@@ -40,6 +43,10 @@ const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
   data.type = activeTab.key === 'Teachers' ? 'teacher' :'student'
   createUser(data);
 };
+
+useEffect(()=>{
+    onClose
+},[isSuccess])
   
 
   return (
@@ -53,6 +60,11 @@ const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
       </GridItem>
 
       <Form onSubmit={handleSubmit(handleCreateUser)}>
+        {isError && (
+          <Box mt={5} backgroundColor="pink">
+            <Typography color="error600">{errorMessage}</Typography>
+          </Box>
+        )}
         <GridContainer>
           {activeTab.key == "Teachers" && (
             <GridItem xs={4} md={4}>
