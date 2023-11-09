@@ -22,14 +22,14 @@ export interface StackProps {
 export const propsToCss = (props: Partial<StackProps>) => css`
   ${props.spacing && `margin-bottom: ${props.spacing}px;`}
   ${props.direction && `flex-direction: ${props.direction};`}
-  ${props.alignItems && `align-items: ${props.alignItems};`}
+  ${props.alignitems && `align-items: ${props.alignitems};`}
   ${props.justifycontent && `justify-content: ${props.justifycontent};`}
 `;
 
 export const StackContainer: any = styled.div<StackProps>`
   display: flex;
   flex-direction: ${(props) => props.direction};
-  align-items: ${(props) => props.alignItems};
+  align-items: ${(props) => props.alignitems};
   justify-content: ${(props) => props.justifycontent};
   padding: ${(props) => props.padding};
   margin-top: ${(props) =>
