@@ -13,8 +13,7 @@ export default withSessionRoute(async function handler(
   res: NextApiResponse<Data>
 ) {
   const users = req.session.users 
-  console.log(req.session);
-  res.status(200).json({ message: "User retrived" ,data:users});
+  res.status(200).json({ message: "User retrived" ,data:users || []});
 });
 
 

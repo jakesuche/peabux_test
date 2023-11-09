@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import http from "./service";
+import { FormDataProps } from "utils/schema";
 
 
 // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-export const GetAll = async <T>(): Promise<any> => {
+export const GetAll = async <T>(): Promise<{message:string,data:FormDataProps[]}> => {
   const response = await http.get('/getUser');
   return response.data;
 };
@@ -21,12 +22,6 @@ const useGetUsers = <T>(
 ) => {
   return useQuery(["GET_USERS"], () => GetAll<T>(), {
     keepPreviousData: true,
-    onSuccess: (data) => {
-     
-    },
-    onError: (error: any) => {
-      return error;
-    },
   });
 };
 

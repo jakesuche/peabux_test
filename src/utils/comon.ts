@@ -1,3 +1,5 @@
+import { FormDataProps } from "./schema";
+
 const calculateAge = (dateOfBirth: string) => {
   const today = new Date();
   const birthDate = new Date(dateOfBirth);
@@ -32,3 +34,7 @@ export const allowOnlyNumber = (value: string, maxLength?: number) => {
     return value?.replace(/[^0-9]/g, "");
   }
 };
+
+export const filterUsers = (users:FormDataProps[],type:'teacher'|'student') => {
+    return users?.filter((user) => user.type === type);
+}

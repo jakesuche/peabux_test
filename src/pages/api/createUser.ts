@@ -36,7 +36,11 @@ export default withSessionRoute(async function handler(
              req.session.users = users;
              await req.session.save();
            } else {
-             res.status(400).json({ error: "Teacher number is not unique" });
+            res
+               .status(400)
+               .json({ error: "Teacher number is not unique" });
+                return;
+            
            }
          } else if (type === "student") {
            // Check if studentNumber is unique
@@ -51,7 +55,10 @@ export default withSessionRoute(async function handler(
              await req.session.save();
            } else {
              // Handle the case where studentNumber is not unique (e.g., return an error)
-             res.status(400).json({ error: "Student number is not unique" });
+              res
+                .status(400)
+                .json({ error: "Student number is not unique" });
+                 return;
            }
          }
 
@@ -67,7 +74,8 @@ export default withSessionRoute(async function handler(
            await req.session.save();
          } else {
            // Handle the case where nationalId is not unique (e.g., return an error)
-           res.status(400).json({ error: "National ID is not unique" });
+            res.status(400).json({ error: "National ID is not unique" });
+            return; 
          }
        } else {
          // If it's not an array, handle it accordingly (e.g., initialize it as an array)

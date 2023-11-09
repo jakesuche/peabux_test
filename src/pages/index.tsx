@@ -24,7 +24,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [show, setShow] = useState(false);
 
-  const {} = useGetUsers()
+  const {data,isLoading} = useGetUsers()
+ const users = data?.data;
+
 
   const handleModal = () => {
     setShow(!show);
@@ -53,13 +55,13 @@ export default function Home() {
             <TabsBody value={activeTab.key} whenActive="Teachers">
               <Stack>
                 <Typography variant="h3">Teachers</Typography>
-                <TeachersTable />
+                <TeachersTable users={users!} />
               </Stack>
             </TabsBody>
             <TabsBody value={activeTab.key} whenActive="Students">
               <Stack>
                 <Typography variant="h3">Students</Typography>
-                <StudentTable />
+                <StudentTable users={users!} />
               </Stack>
             </TabsBody>
           </GridItem>
