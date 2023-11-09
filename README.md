@@ -5,9 +5,6 @@
 - TypeScript
 - ESlint, Prettier
 - Styled-Components
-- Cypress, e2e testing with cypress
-- Storybook
-- Jest, Unit testing with Jest and testing libary
 
 ## Structure
 
