@@ -20,5 +20,6 @@ export type FormDataProps = {
   teacherNumber: string;
   salary: string;
   studentNumber: string;
+  type:'student' | 'teacher'
 };
 

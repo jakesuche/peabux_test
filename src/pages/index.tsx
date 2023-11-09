@@ -1,3 +1,4 @@
+import useGetUsers from "lib/useGetUsers";
 import { useState } from "react";
 import { Button } from "ui/atoms/Button";
 import { Container } from "ui/atoms/Container";
@@ -22,6 +23,8 @@ export const tabs = [
 export default function Home() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [show, setShow] = useState(false);
+
+  const {} = useGetUsers()
 
   const handleModal = () => {
     setShow(!show);

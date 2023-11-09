@@ -10,6 +10,7 @@ import { FormDataProps, defaultValues } from 'utils/schema';
 import { validateDateOfBirth } from 'utils/comon';
 import { tabs } from 'pages';
 import { Typography } from 'ui/atoms/Typography';
+import useCreateUser from 'lib/useCreateUser';
 
 
 type Iprops = keyof typeof defaultValues;
@@ -20,7 +21,7 @@ type Iprops = keyof typeof defaultValues;
 
 function CreationForm() {
 const [activeTab, setActiveTab] = useState(tabs[0]);
-
+const {mutate:createUser} = useCreateUser()
 
 const {register, handleSubmit, control, formState:{errors} } = useForm({
   defaultValues,
@@ -37,6 +38,7 @@ const handleError = (value: Iprops) => {
 
 const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
   console.log(data);
+  createUser(data)
 };
   
 
