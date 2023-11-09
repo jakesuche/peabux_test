@@ -23,7 +23,7 @@ function CreationForm() {
 const [activeTab, setActiveTab] = useState(tabs[0]);
 const {mutate:createUser} = useCreateUser()
 
-const {register, handleSubmit, control, formState:{errors} } = useForm({
+const {register, handleSubmit, formState:{errors} } = useForm({
   defaultValues,
   mode:'all'
 });
@@ -37,8 +37,8 @@ const handleError = (value: Iprops) => {
 };
 
 const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
-  console.log(data);
-  createUser(data)
+  data.type = activeTab.key === 'Teachers' ? 'teacher' :'student'
+  createUser(data);
 };
   
 
