@@ -5,9 +5,9 @@ import { TextInput } from 'ui/atoms/TextInput';
 import TabController from 'ui/components/TabController';
 import { Form } from './index.styled';
 import { Button } from 'ui/atoms/Button';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { FormDataProps, defaultValues } from 'utils/schema';
-import { validateDateOfBirth } from 'utils/comon';
+import { allowOnlyNumber, validateDateOfBirth } from 'utils/comon';
 import { tabs } from 'pages';
 import { Typography } from 'ui/atoms/Typography';
 import useCreateUser from 'lib/useCreateUser';
@@ -23,7 +23,7 @@ function CreationForm() {
 const [activeTab, setActiveTab] = useState(tabs[0]);
 const {mutate:createUser} = useCreateUser()
 
-const {register, handleSubmit, formState:{errors} } = useForm({
+const {register, handleSubmit,control, formState:{errors} } = useForm({
   defaultValues,
   mode:'all'
 });
@@ -65,8 +65,8 @@ const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
                   <option value={item}>{item}</option>
                 ))}
               </select>
-              <Typography size='xs' color='error500'>
-                {handleError('title').errorText}
+              <Typography size="xs" color="error500">
+                {handleError("title").errorText}
               </Typography>
             </GridItem>
           )}
@@ -98,46 +98,82 @@ const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
             />
           </GridItem>
           <GridItem xs={12} md={12}>
-            <TextInput
-              {...handleError("nationalId")}
-              {...register("nationalId", {
+            <Controller
+              control={control}
+              name="nationalId"
+              rules={{
                 required: "National id is required",
-              })}
-              placeholder="National Id"
-              label="National ID"
+                minLength: {
+                  value: 11,
+                  message: "National id be at 11 characters",
+                },
+              }}
+              render={({ field: { onChange, ...rest } }) => (
+                <TextInput
+                  {...handleError("nationalId")}
+                  placeholder="National Id"
+                  label="National ID"
+                  {...rest}
+                  maxLength={11}
+                  onChange={(e) => onChange(allowOnlyNumber(e.target.value))}
+                />
+              )}
             />
           </GridItem>
 
           {activeTab.key == "Teachers" ? (
             <>
               <GridItem xs={12} md={12}>
-                <TextInput
-                  placeholder="Teacher's Number"
-                  label="Teacher Number"
-                  {...handleError("teacherNumber")}
-                  {...register("teacherNumber", {
-                    required: "Teacher's number  is required",
-                  })}
+                <Controller
+                  control={control}
+                  name="teacherNumber"
+                  rules={{
+                    required: "Teacher's number  is required and must be 6",
+                    minLength: {
+                      value: 6,
+                      message: "Teacher must be at 6 characters",
+                    },
+                  }}
+                  render={({ field: { onChange, ...rest } }) => (
+                    <TextInput
+                      {...handleError("teacherNumber")}
+                      placeholder="Teacher's Number"
+                      label="Teacher's Number"
+                      {...rest}
+                      maxLength={6}
+                      onChange={(e) =>
+                        onChange(allowOnlyNumber(e.target.value))
+                      }
+                    />
+                  )}
                 />
               </GridItem>
               <GridItem xs={12} md={12}>
-                <TextInput
-                  {...handleError("salary")}
-                  {...register("salary", { required: "Saraly is required" })}
-                  placeholder="Salary"
-                  label="Salary"
-                />
+                <TextInput placeholder="Salary" label="Salary (optional)" />
               </GridItem>
             </>
           ) : (
             <GridItem xs={12} md={12}>
-              <TextInput
-                {...handleError("studentNumber")}
-                {...register("studentNumber", {
+              <Controller
+                control={control}
+                name="studentNumber"
+                rules={{
                   required: "Student number is required",
-                })}
-                placeholder="Student number"
-                label="Student Number"
+                  minLength: {
+                    value: 6,
+                    message: "Student number must be at 6 characters",
+                  },
+                }}
+                render={({ field: { onChange, ...rest } }) => (
+                  <TextInput
+                    {...handleError("studentNumber")}
+                    placeholder="Student number"
+                    label="Student Number"
+                    {...rest}
+                    maxLength={6}
+                    onChange={(e) => onChange(allowOnlyNumber(e.target.value))}
+                  />
+                )}
               />
             </GridItem>
           )}

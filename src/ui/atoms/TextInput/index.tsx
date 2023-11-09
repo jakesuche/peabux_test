@@ -28,6 +28,7 @@ export const TextInput = React.forwardRef((props: InputProps, ref) => {
     width,
     height,
     textCenter,
+    maxLength,
     labelClass
   } = props;
 

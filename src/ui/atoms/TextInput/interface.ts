@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 
 export type InputProps = {
   name?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
   value?: string;
   type?: string;
   label?: string;
@@ -29,4 +29,5 @@ export type InputProps = {
   crossIconOnClick?: () => void;
   textCenter?: boolean;
   labelClass?: string;
+  maxLength?:number;
 };
