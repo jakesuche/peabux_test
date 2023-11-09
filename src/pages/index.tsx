@@ -11,7 +11,8 @@ import CreationForm from "ui/widgets/CreationForm";
 import Layout from "ui/widgets/Layout";
 import { StudentTable, TeachersTable } from "ui/widgets/UserTables";
 
-export const tabs = [
+export type TabsProps = {key: string}
+export const tabs: TabsProps[] = [
   {
     key: "Teachers",
   },
@@ -69,7 +70,11 @@ export default function Home() {
         </GridContainer>
 
         <SimpleModal onClose={handleModal} isOpen={show}>
-          <CreationForm onClose={handleModal} />
+          <CreationForm
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            onClose={handleModal}
+          />
         </SimpleModal>
       </Container>
     </Layout>

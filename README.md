@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js + TypeScript
 
-## Getting Started
+## Features
 
-First, run the development server:
+- TypeScript
+- ESlint, Prettier
+- Styled-Components
+- Cypress, e2e testing with cypress
+- Storybook
+- Jest, Unit testing with Jest and testing libary
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Structure
+
+```raw
+.
+
+├── public/                           Static content to serve
+├── src/
+│   ├── pages/
+│   │    ├── _app.tsx                 React UI wrapper, equivalent to "App.js" in CRA
+│   │    ├── _document.tsx            NextJS wrapper, provides raw HTML used in SSR
+│   │    └── *                        Page components, routing is based on file tree
+│   ├── styles/
+│   │    ├── global.ts                Global Styles
+│   │    └── theme.ts                 Setup Styled-Components theme
+│   ├── ui/                           Reusable stateless components based on Styled-Components with story and jest test, in 3 different subfolders
+│   │    ├── atoms                    Atom components like Button, Image, Link, Tooltip etc
+│   │    ├── components               Card, Hero, Gallery etc, which consume a set of atom components.
+│   │    └── widgets                  Wdigets consume a set of components can be something larger, lives in pages.
+│   └── utils/  
+│   │    ├── common.ts                common utility functions
+│   │    ├── schema.ts                 data models
+
+├── cypress.json                      Cypress config
+├── .prettierrc                       Prettier config
+└── package.json                      Application manifest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```shell
+yarn install
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# start dev mode
+yarn dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+yarn build
+yarn start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Theme
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The theme is based on mobile first and defined in src/styles/theme.ts file. Open the file to check the details. The theme has few media query helper functions:
 
-## Deploy on Vercel
+- theme.media.small
+- theme.media.medium
+- theme.media.large
+- theme.media.up
+- theme.media.down
+- theme.media.between
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Usage example:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

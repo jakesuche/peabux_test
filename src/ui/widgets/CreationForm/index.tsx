@@ -1,53 +1,58 @@
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
-import { GridContainer, GridItem } from 'ui/atoms/Grid';
-import { TextInput } from 'ui/atoms/TextInput';
-import TabController from 'ui/components/TabController';
-import { Form } from './index.styled';
-import { Button } from 'ui/atoms/Button';
-import { FormDataProps, defaultValues } from 'utils/schema';
-import { allowOnlyNumber, validateDateOfBirth } from 'utils/comon';
-import { tabs } from 'pages';
-import { Typography } from 'ui/atoms/Typography';
-import useCreateUser from 'lib/useCreateUser';
-import Box from 'ui/atoms/Box';
-
+import { GridContainer, GridItem } from "ui/atoms/Grid";
+import { TextInput } from "ui/atoms/TextInput";
+import TabController from "ui/components/TabController";
+import { Form } from "./index.styled";
+import { Button } from "ui/atoms/Button";
+import { FormDataProps, defaultValues } from "utils/schema";
+import { allowOnlyNumber, validateDateOfBirth } from "utils/comon";
+import { TabsProps, tabs } from "pages";
+import { Typography } from "ui/atoms/Typography";
+import useCreateUser from "lib/useCreateUser";
+import Box from "ui/atoms/Box";
 
 type Iprops = keyof typeof defaultValues;
+type componentProps = {
+  setActiveTab: Dispatch<SetStateAction<TabsProps>>;
+  onClose: () => void;
+  activeTab: TabsProps;
+};
 
+const titles = ["Mr", "Mrs", "Miss", "Dr", "Prof"];
 
- const titles = ["Mr", "Mrs", "Miss", "Dr", "Prof"]; 
+function CreationForm({ onClose, setActiveTab, activeTab }: componentProps) {
+  const { mutate: createUser, isError, error, isSuccess } = useCreateUser();
+  const errorMessage = error?.response.data.error;
 
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues,
+    mode: "all",
+  });
 
-function CreationForm({onClose}:{onClose: () => void}) {
-const [activeTab, setActiveTab] = useState(tabs[0]);
-const {mutate:createUser, isError,error,isSuccess} = useCreateUser()
-const errorMessage = error?.response.data.error;
-
-const {register, handleSubmit,control, formState:{errors} } = useForm({
-  defaultValues,
-  mode:'all'
-});
-
-
-
-const handleError = (value: Iprops) => {
-  return {
-    errorText: errors[value]?.message,
-    isValid: !errors[value]?.message,
+  const handleError = (value: Iprops) => {
+    return {
+      errorText: errors[value]?.message,
+      isValid: !errors[value]?.message,
+    };
   };
-};
 
-const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
-  data.type = activeTab.key === 'Teachers' ? 'teacher' :'student'
-  createUser(data);
-};
+  const handleCreateUser: SubmitHandler<FormDataProps> = (data) => {
+    data.type = activeTab.key === "Teachers" ? "teacher" : "student";
+    createUser(data);
+  };
 
-useEffect(()=>{
-    onClose
-},[isSuccess])
-  
+  useEffect(() => {
+    if (isSuccess) {
+      onClose();
+    }
+  }, [isSuccess]);
 
   return (
     <>
