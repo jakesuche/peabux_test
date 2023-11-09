@@ -314,14 +314,7 @@ const lineHeights = {
   taller: '2'
 };
 
-const shadows = [
-  '3px 3px 10px 0 rgba(0,0,0,0.3)',
-  '0px 3px 6px rgba(0,0,0,0.29)',
-  '0px 15px 10px -5px rgba(0,0,0,0.29)',
-  'inset 0px 2px 4px rgba(0,0,0,0.8)',
-  //used in ProductCardBig
-  '4px 4px 25px -2px rgba(0, 0, 0, 0.3)'
-];
+
 
 // The space key allows you to customize the global spacing and sizing scale for your project.
 // By default these spacing value can be referenced by the padding, margin, and top, left, right, bottom styles.
@@ -431,7 +424,6 @@ export const theme: DefaultTheme = {
   fontWeights,
   lettingSpacings,
   lineHeights,
-  shadows,
   space,
   sizes,
   zIndices,

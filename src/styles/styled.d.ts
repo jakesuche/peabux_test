@@ -277,7 +277,6 @@ declare module 'styled-components' {
     fontWeights: FontWeightType;
     lettingSpacings: LetterSpacingType;
     lineHeights: LetterHeightType;
-    shadows: string[];
     sizes: SizeType;
     space: SpaceType;
     zIndices: ZindexType;

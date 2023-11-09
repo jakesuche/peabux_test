@@ -2,15 +2,19 @@ import React from "react";
 import Stack from "ui/atoms/Stack";
 import { Typography } from "ui/atoms/Typography";
 
-import { BookingsTableContainer, BookingsTableWrapper } from "./index.styled";
+import { TableContainer, TableWrapper } from "./index.styled";
 import { FormDataProps } from "utils/schema";
 import { filterUsers } from "utils/comon";
 
-export const TeachersTable = ({users}:{users:FormDataProps[]}): JSX.Element => {
+export const TeachersTable = ({
+  users,
+}: {
+  users: FormDataProps[];
+}): JSX.Element => {
   return (
-    <BookingsTableWrapper>
-      {users?.length && filterUsers(users,'teacher').length > 0 ? (
-        <BookingsTableContainer>
+    <TableWrapper>
+      {users?.length && filterUsers(users, "teacher").length > 0 ? (
+        <TableContainer>
           <thead>
             <tr>
               <th align="left">National ID </th>
@@ -23,7 +27,7 @@ export const TeachersTable = ({users}:{users:FormDataProps[]}): JSX.Element => {
             </tr>
           </thead>
           <tbody>
-            {filterUsers(users,'teacher')?.map((e, i) => (
+            {filterUsers(users, "teacher")?.map((e, i) => (
               <tr key={e.studentNumber}>
                 <td align="left">{e.nationalId}</td>
                 <td>{e.title}</td>
@@ -35,12 +39,10 @@ export const TeachersTable = ({users}:{users:FormDataProps[]}): JSX.Element => {
               </tr>
             ))}
           </tbody>
-        </BookingsTableContainer>
+        </TableContainer>
       ) : (
         <Typography>Teachers list is empty</Typography>
       )}
-    </BookingsTableWrapper>
+    </TableWrapper>
   );
 };
-
-

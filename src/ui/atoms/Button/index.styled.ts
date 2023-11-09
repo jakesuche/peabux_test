@@ -59,42 +59,6 @@ export const Button = styled.button<ButtonProps>`
             backgroundColor: theme?.colors?.cottenSeed,
           },
         },
-        outline: {
-          fontFamily: theme?.fonts?.primary,
-          color: theme?.colors?.lightBlue,
-          border: `1px solid ${theme?.colors?.lightBlue}`,
-          backgroundColor: theme?.colors?.white,
-          borderRadius: theme?.borderRadius?.base,
-          lineHeight: "shorter",
-
-          "&:disabled": {
-            color: theme?.colors?.gray,
-            borderColor: theme?.colors?.gray,
-          },
-        },
-        link: {
-          appearance: "none",
-          background: "transparent",
-          fontFamily: theme?.fonts?.primary,
-          display: "flex",
-          alignitems: "center",
-          color: theme?.colors?.blue,
-          padding: 0,
-          textTransform: "uppercase",
-        },
-        secondary: {
-          fontFamily: theme?.fonts?.primary,
-          backgroundColor: theme?.colors?.orange,
-          color: theme?.colors?.black,
-        },
-        interactiveSolid: {
-          background: "transparent",
-          color: theme?.colors?.white,
-          border: "2px solid",
-          borderColor: theme?.colors?.lightBlue,
-          padding: `${theme?.space?.["2.5"]} ${theme?.space?.["5"]}`,
-          transition: `border 0.125s ease, background 0.125s ease`,
-        },
         interactiveOutlined: {
           background: "transparent",
           color: theme?.colors?.white,

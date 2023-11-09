@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import { Typography } from 'ui/atoms/Typography';
+import styled from "styled-components";
 
-export const BookingsTableWrapper = styled.div`
+export const TableWrapper = styled.div`
   background: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
   margin-top: 35px;
@@ -14,14 +13,9 @@ export const BookingsTableWrapper = styled.div`
   }
 `;
 
-export const BookingsTableContainer = styled.table`
+export const TableContainer = styled.table`
   width: 100%;
   border-collapse: collapse;
-  img {
-    height: 40px;
-    width: 48px;
-    object-fit: cover;
-  }
   thead {
     text-align: left;
 
@@ -77,31 +71,5 @@ export const BookingsTableContainer = styled.table`
   }
 `;
 
-export const FlightDistanceTD = styled.div`
-  display: flex;
-  align-items: center;
-  svg {
-    width: 70px;
-    margin: 0 12px;
-  }
-`;
 
-export const BookingTableStatus = styled(Typography)<{ BookingStatusName: string }>`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  letter-spacing: 0.02em;
-  ${({ BookingStatusName, theme }) =>
-    BookingStatusName?.toLowerCase() === 'active' &&
-    `
-        color: ${theme.colors.success600};
-    `}
-  ${({ BookingStatusName }) =>
-    BookingStatusName?.toLowerCase() === 'ticketpending' &&
-    `
-        color: #FBBF24;
-    `}
-    ${({ BookingStatusName }) =>
-    BookingStatusName?.toLowerCase() === 'cancelled' &&
-    `
-        color:red;
-    `}
-`;
+

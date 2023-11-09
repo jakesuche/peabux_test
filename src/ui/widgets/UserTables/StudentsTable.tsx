@@ -2,15 +2,19 @@ import React from "react";
 
 import { Typography } from "ui/atoms/Typography";
 
-import { BookingsTableContainer, BookingsTableWrapper } from "./index.styled";
+import { TableContainer, TableWrapper } from "./index.styled";
 import { FormDataProps } from "utils/schema";
 import { filterUsers } from "utils/comon";
 
-export const StudentTable = ({users}:{users:FormDataProps[]}): JSX.Element => {
+export const StudentTable = ({
+  users,
+}: {
+  users: FormDataProps[];
+}): JSX.Element => {
   return (
-    <BookingsTableWrapper>
+    <TableWrapper>
       {users?.length && filterUsers(users, "student")?.length > 0 ? (
-        <BookingsTableContainer>
+        <TableContainer>
           <thead>
             <tr>
               <th>National ID </th>
@@ -32,12 +36,10 @@ export const StudentTable = ({users}:{users:FormDataProps[]}): JSX.Element => {
               </tr>
             ))}
           </tbody>
-        </BookingsTableContainer>
+        </TableContainer>
       ) : (
         <Typography>Students list is empty</Typography>
       )}
-    </BookingsTableWrapper>
+    </TableWrapper>
   );
 };
-
-
